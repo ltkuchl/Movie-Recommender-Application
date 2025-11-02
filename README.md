@@ -7,11 +7,11 @@ Organization:
  Notes:
 - If you need an additional package install it in the environment with pip and then generate a new requirements file using 'pip freeze > requirements.txt'. This will help others run your newly added code.
 
-To do:
-- Set up a project folder to get started (Leo)
-- Make a virtual environment (Leo)
-- Set up git and share the folder 
-- Split dataset into train and test
+Jobs:
+- Set up a project folder to get started (Leo) - done
+- Make a virtual environment (Leo) - done
+- Set up git and share the folder (Leo) - done
 - Write user-based prediction function (Leo) - done
-- Write item-based prediction function (Leo)
+- Write item-based prediction function (Leo) - done
+- Set up prediction accuracy test (implement consistent test/train split)
 - Set up web application 
