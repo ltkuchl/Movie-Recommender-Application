@@ -14,5 +14,5 @@ Jobs:
 - Write user-based prediction function (Leo) - done
 - Write item-based prediction function (Leo) - done
 - Set up prediction accuracy test (implement consistent test/train split)
-- Set up web application
+- Set up web application (Nils)
 - Add more jobs

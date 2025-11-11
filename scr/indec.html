@@ -66,7 +66,6 @@
   </header>
 
   <main>
-    <!-- Login Section -->
     <div id="login-section">
       <h2>Login</h2>
       <input type="text" id="username" placeholder="Enter username" /><br>
@@ -74,7 +73,6 @@
       <button onclick="login()">Login</button>
     </div>
 
-    <!-- Main Content -->
     <div id="main-content" class="hidden">
       <h2>Welcome, <span id="user-name"></span>!</h2>
       <button onclick="logout()">Logout</button>
@@ -97,20 +95,17 @@
   </main>
 
   <script>
-    // ---- TEMPORARY MOCK DATA ----
     const dummyUser = {
       username: "nils",
       rated: ["Inception ⭐5", "Titanic ⭐3"],
       recommended: ["Interstellar", "The Matrix"],
-      similar: ["anna", "bob"]
+      similar: ["Anna", "Bob"]
     };
 
     function login() {
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value.trim();
 
-      // This will later be replaced with a Python backend call like:
-      // fetch('/login', { method: 'POST', body: JSON.stringify({ username, password }) })
       if (username && password) {
         document.getElementById("login-section").classList.add("hidden");
         document.getElementById("main-content").classList.remove("hidden");
