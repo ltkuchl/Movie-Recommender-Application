@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Recommendation System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #5e4bea;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #6634db;
+      color: rgb(255, 255, 255);
+      padding: 15px;
+    }
+
+    main {
+      padding: 40px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #2980b0;
+    }
+
+    input {
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 200px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .movie {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    #rated-list, #recommendations, #similar-users {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Movie Recommendation System </h1>
+  </header>
+
+  <main>
+    <!-- Login Section -->
+    <div id="login-section">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Enter username" /><br>
+      <input type="password" id="password" placeholder="Enter password" /><br>
+      <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="hidden">
+      <h2>Welcome, <span id="user-name"></span>!</h2>
+      <button onclick="logout()">Logout</button>
+
+      <section>
+        <h3>Your Rated Movies</h3>
+        <div id="rated-list"></div>
+      </section>
+
+      <section>
+        <h3>Recommended Movies</h3>
+        <div id="recommendations"></div>
+      </section>
+
+      <section>
+        <h3>Users with Similar Taste</h3>
+        <div id="similar-users"></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // ---- TEMPORARY MOCK DATA ----
+    const dummyUser = {
+      username: "nils",
+      rated: ["Inception ⭐5", "Titanic ⭐3"],
+      recommended: ["Interstellar", "The Matrix"],
+      similar: ["anna", "bob"]
+    };
+
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // This will later be replaced with a Python backend call like:
+      // fetch('/login', { method: 'POST', body: JSON.stringify({ username, password }) })
+      if (username && password) {
+        document.getElementById("login-section").classList.add("hidden");
+        document.getElementById("main-content").classList.remove("hidden");
+        document.getElementById("user-name").innerText = username;
+        showData(dummyUser);
+      } else {
+        alert("Please enter both username and password");
+      }
+    }
+
+    function logout() {
+      document.getElementById("main-content").classList.add("hidden");
+      document.getElementById("login-section").classList.remove("hidden");
+    }
+
+    function showData(userData) {
+      document.getElementById("rated-list").innerHTML =
+        userData.rated.map(m => `<div class="movie">${m}</div>`).join("");
+
+      document.getElementById("recommendations").innerHTML =
+        userData.recommended.map(m => `<div class="movie">${m}</div>`).join("");
+
+      document.getElementById("similar-users").innerHTML =
+        userData.similar.map(u => `<div>${u}</div>`).join("");
+    }
+  </script>
+</body>
+</html>
